@@ -1,0 +1,48 @@
+<html>
+<%- include("partials/header.ejs") %>
+
+<% if (locals.url=="") { %>
+  <h1>Put Your Youtube Link Below</h1>
+  <%- include("link.ejs") %>
+<% } else { %>
+  <h1>Here is the transcript</h1>
+  <textarea id="transcriptBox" rows="50" cols="80" readonly>
+<%= transcript %>
+  </textarea >
+  <a href="#" id="copyTranscriptLink" ><ion-icon name="copy-outline"></ion-icon></a>
+  <br>
+  <ul class="menu">
+    <li><a href="/">Generate Again</a></li>
+    
+    
+  </ul>
+
+
+<% } %>
+
+<%- include("partials/footer.ejs") %>
+
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    var copyLink = document.getElementById('copyTranscriptLink');
+    if(copyLink) {
+      copyLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        copyTranscript();
+      });
+    }
+  });
+  
+  function copyTranscript() {
+    var copyText = document.getElementById("transcriptBox");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); 
+    document.execCommand("copy");
+  
+    alert("Transcript copied to clipboard!");
+  }
+  </script>
+</html>
