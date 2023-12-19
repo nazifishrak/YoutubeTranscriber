@@ -22,6 +22,9 @@ main {
 
 h1 {
   text-align: center;
+  color:#3586ff;
+  font-weight: bold;
+
 }
 
 p {
@@ -82,6 +85,9 @@ textarea {
   background: #3586ff;
 }
 
+.star{
+    font-size: 100px;
+}
 
 textarea {
   overflow: auto;

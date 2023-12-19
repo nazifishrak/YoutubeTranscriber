@@ -1,6 +1,6 @@
 import express from "express";
 const app = express();
-const port = 3000;
+const port = 5000;
 import pkg from 'youtube-transcript';
 const {YoutubeTranscript} = pkg;
  app.use(express.static("public"))
@@ -8,7 +8,7 @@ const {YoutubeTranscript} = pkg;
 
 function getYoutubeTranscript(url) {
   return YoutubeTranscript.fetchTranscript(url).then((tObj) => {
-    let concatenatedText = tObj.map(caption => caption.text).join('\n');
+    let concatenatedText = tObj.map(caption => caption.text).join(' ');
     return concatenatedText;
   })
 
